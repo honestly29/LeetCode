@@ -1,16 +1,22 @@
 class Solution:
-    def sortPeople(self, names: list[str], heights: list[int]) -> list[str]:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        
+        len_word1 = len(word1)
+        len_word2 = len(word2)
 
-        my_dict = {}
-        ans = []
+        N = min(len_word1, len_word2)
 
-        for i in range(len(names)):
-            my_dict[heights[i]] = names[i]
+        new_word = ""
+
+        for i in range(N):
+            new_word += word1[i]
+            new_word += word2[i]
 
 
-        heights.sort(reverse=True)
+        if len_word1 > len_word2:
+            new_word += word1[N:]
+        else:
+            new_word += word2[N:]
 
-        for num in heights:
-            ans.append(my_dict[num])
 
-        return(ans)
+        return(new_word)
