@@ -1,13 +1,11 @@
 /**
- * @param {string} s
+ * @param {...(null|boolean|number|string|Array|Object)} args
  * @return {number}
  */
-var scoreOfString = function(s) {
-    let count = 0;
-
-    for (let i=1; i<s.length; i++){
-        count += Math.abs(s[i-1].charCodeAt(0) - s[i].charCodeAt(0));
-    }
-
-    return count;
+var argumentsLength = function(...args) {
+    return args.length;
 };
+
+/**
+ * argumentsLength(1, 2, 3); // 3
+ */
