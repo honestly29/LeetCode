@@ -1,19 +1,23 @@
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         
-        ans = []
-        curr = 0
+        n = len(boxes)
+        ans = [0] * n
 
-        while curr < len(boxes):
-            count = 0
+        leftCount, leftCost, rightCount, rightCost = 0, 0, 0, 0
 
-            for i in range(len(boxes)):
+        for i in range(1, n):
+            if boxes[i-1] == '1':
+                leftCount += 1
+            
+            leftCost += leftCount
+            ans[i] = leftCost
 
-                if i != curr and boxes[i] == '1':
+        for i in range(n-2, -1, -1):  
+            if boxes[i+1] == '1': 
+                rightCount += 1
 
-                    count += abs(i - curr)
-
-            ans.append(count)
-            curr += 1
+            rightCost += rightCount
+            ans[i] += rightCost
 
         return(ans)
