@@ -1,18 +1,19 @@
 class Solution:
-    def countOperations(self, num1: int, num2: int) -> int:
+    def pivotIndex(self, nums: List[int]) -> int:
         
-        count = 0
+        sumLeft = 0
+        sumRight = sum(nums)
 
-        while num1 != 0 and num2 != 0:
+        for idx, ele in enumerate(nums):
 
-            if num1 >= num2:
+            sumRight -= ele
 
-                num1 -= num2
-                count += 1
-            
-            else:
+            if sumLeft == sumRight:
 
-                num2 -= num1
-                count += 1
+                return idx
 
-        return(count)
+            sumLeft += ele
+
+        return -1
+
+   
